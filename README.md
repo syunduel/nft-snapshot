@@ -13,16 +13,22 @@ Download the necessary files.
 Create .env file.
 `touch .env`.
 
-Fill in the .env file with the Server URL for Moralis.
+Fill in the .env file with the Server URL and Application ID for Moralis.
 `SERVER_URL="https://xxxxxxxxxxx.usemoralis.com:2053/server"`
+`APP_ID="xxxxxxxx"`
+
+Set the contract address; change the value of contractAddress in index.ts.
+(I really wanted it to be set in the configuration file)
+
+Create output folder.
+By default, output is in the /output/ folder.
+The output destination can be changed in nftconfig.json.
+
 
 Start the program.
 `npm run app`.
 
-By default, output is in the /output/ folder.
-Output can be in CSV or JSON.
-
-The config file is nftconfig.json. You can specify the contract address, blocknumber, etc.
+Output can be in CSV and JSON.
 
 # nft-snapshot
 NFT のホルダーのwallet addressのスナップショットをとります。
@@ -40,13 +46,19 @@ NFT のホルダーのwallet addressのスナップショットをとります�
 .envファイルを作成します。
 `touch .env`
 
-.envファイルに、MoralisのServer URLを記入します。
+.envファイルに、MoralisのServer URLとApplication IDを記入します。
 `SERVER_URL="https://xxxxxxxxxxx.usemoralis.com:2053/server"`
+`APP_ID="xxxxxxxx"`
+
+index.tsの中でコントラクトのアドレスを設定します。
+（本当は設定ファイルで設定するようにしたい）
+
+出力先のフォルダを作成します。
+初期設定だと、 /output/フォルダに出力されます。
+出力先はnftconfig.jsonで変更できます。
 
 プログラムをスタートさせます。
 `npm run app`
 
 初期設定だと、 /output/フォルダに出力されます。
-CSVとJSONにて出力が可能です。
-
-また、configファイルは nftconfig.json です。コントラクトアドレスやblocknumberなどの指定が可能です。
+CSVとJSONにて出力されます。
