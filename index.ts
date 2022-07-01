@@ -7,21 +7,22 @@ dotenv.config();
 
 const serverUrl = process.env.SERVER_URL;
 const appId = process.env.APP_ID;
-const contractAddress = '0x9C99d7f09d4a7e23EA4E36AeC4CB590C5bbdB0e2';
+const contractAddress = process.env.CONTRACT_ADDRESS != null ? process.env.CONTRACT_ADDRESS : "";
 
 async function getAllOwners() {
   try {
     await moralis.start({serverUrl: serverUrl, appId: appId})
-    let options: any = nftconfig.options;
     let cursor = null
     let owners: any = Array();
+
     do {
-      const response: any = await moralis.Web3API.token.getNFTOwners({ address: contractAddress, chain: 'eth', limit: 500, cursor: cursor  })
+      const response: any = await moralis.Web3API.token.getNFTOwners({ address: contractAddress, chain: 'eth', limit: 100, cursor: cursor  })
       console.log(`Got page ${response.page} of ${Math.ceil(response.total / response.page_size)}, ${response.total} total`)
       for (const owner of response.result) {
         owners.push({tokenAddress: owner.token_address, tokenId: owner.token_id, owner: owner.owner_of, });
       }
       cursor = response.cursor
+      await new Promise(resolve => setTimeout(resolve, 3000)) // 3秒待つ
     } while (cursor != '' && cursor != null)
 
     console.log("typeof : " + typeof(owners));

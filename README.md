@@ -46,12 +46,10 @@ NFT のホルダーのwallet addressのスナップショットをとります�
 .envファイルを作成します。
 `touch .env`
 
-.envファイルに、MoralisのServer URLとApplication IDを記入します。
+.envファイルに、MoralisのServer URL、Application ID、CONTRACT_ADDRESSを記入します。
 `SERVER_URL="https://xxxxxxxxxxx.usemoralis.com:2053/server"`
 `APP_ID="xxxxxxxx"`
-
-index.tsの中でコントラクトのアドレスを設定します。
-（本当は設定ファイルで設定するようにしたい）
+`CONTRACT_ADDRESS="0xXXXXXXXXX"`
 
 出力先のフォルダを作成します。
 初期設定だと、 /output/フォルダに出力されます。
@@ -60,5 +58,4 @@ index.tsの中でコントラクトのアドレスを設定します。
 プログラムをスタートさせます。
 `npm run app`
 
-初期設定だと、 /output/フォルダに出力されます。
 CSVとJSONにて出力されます。
